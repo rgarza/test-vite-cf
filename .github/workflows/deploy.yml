@@ -18,3 +18,11 @@ jobs:
           node-version: '20.x'
       - run: npm ci
       - run: npm run build
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: d0c5d93007bf8434609ea82cb7251a61
+          projectName: test-vite
+          directory: dist
+          wranglerVersion: '3'
